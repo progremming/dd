@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    li{
+        list-style: none;
+    }
+    #wrap{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    #header{
+        width: 100%;
+        height: 100px;
+        display: flex;
+    }
+    .logo{
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav{
+        width: 80%;
+        height: 100%;
+        background-color: rgb(206, 206, 206);
+    }
+    .nav > ul{
+        justify-content: right;
+        display: flex;
+        margin: 30px 30px 0 0;
+
+    }
+    .nav > ul > li {
+        position: relative;
+    }
+    .nav > ul > li > a{
+        padding: 15px 40px;
+        display: inline-block;
+        background-color: rgb(137, 137, 137);
+    }
+    .nav > ul > li > ul{
+        position:absolute;
+        width: 100%;
+        transition: all 0.6s;
+        overflow: hidden;
+        height: 0px;
+        z-index: 1000;
+    }
+    .nav > ul > li > ul > li > a{
+        width: 100%;
+        display: inline-block;
+        padding: 20px;
+        background-color: rgb(121, 121, 121);
+        box-sizing: border-box;
+        text-align: center;
+        display: none;
+    }
+
+    #slider{
+        width: 100%;
+        height: 300px;
+        background-color: rgb(78, 78, 78);
+    }
+
+    
+
+    .imglist{
+        position: relative;
+    }
+
+    .sl{
+        opacity: 0;
+    }
+    .sl:first-child{
+        opacity: 1;
+    }
+    .sl{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .slider_text{
+        position: absolute;
+        padding: 20px;
+        background-color: rgb(146, 146, 146,0.7);
+        left: 80%;
+        top:100px;
+    }
+    #content{
+        width: 100%;
+        height: 200px;
+        display: flex;
+    }
+    .con1{
+        width: 35%;
+        height: 100%;
+        background-color: rgb(221, 221, 221);
+    }
+
+    .tab{
+        padding: 20px;
+        width: 100%;
+    
+    }
+    .tab_bth{
+        display: flex;
+        margin-bottom: 17px;
+        margin-top: 5px;
+    }
+
+    .tab_text1{
+        width: 90%;
+    }
+
+    .tab_text1 > div{
+        display: flex;
+
+    }
+    .tba_text_span{
+        width: 70%;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .day{
+        width: 30%;
+        display: block;
+        justify-content: right;
+        display: flex;
+    }
+    .aci{
+        border-bottom: solid 2px #000000;
+    }
+    .con2{
+        width: 30%;
+        height: 100%;
+        background-color: lightcyan;
+        position: relative;
+    }
+    .con2 > img{
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    .con2_text{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: rgb(121, 121, 121,0.6);
+        padding: 20px;
+    }
+    .con3{
+        width: 35%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+        background-color: rgb(111, 111, 111); 
+    }
+    .con3 > div{
+        margin: 0px 15px;
+    }
+    #wrap{
+        position: relative;
+    }
+    .pop{
+        position: absolute;
+        display: none;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 300px;
+        background-color:#c3aeae;
+        transform: translate(-50%,-50%);
+    }
+    #footer{
+        display: flex;
+        width: 100%;
+        height: 100px;
+    }
+    .footer1{
+        width: 20%;
+        height: 100%;
+        background-color: lightgoldenrodyellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer2{
+        width: 80%;
+        height: 100%;
+    }
+    .footer2-1{
+        width: 100%;
+        height: 50%;
+        background-color: lightcyan;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer2-1 > div{
+        width: 20%;
+        text-align: center;
+    }
+    .footer2-2{
+        width: 100%;
+        height: 50%;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .footer2-2 > div{
+
+    }
+
+    
+</style>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Header/logo(원본).png">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="#">강원천문대</a>
+                        <ul class="submenu">
+                            <li><a href="#">천문대소개</a></li>
+                            <li><a href="#"> 인사말</a></li>
+                            <li><a href="#"> 오시는길</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">이용안내</a>
+                        <ul class="submenu">
+                            <li><a href="#">프로그램</a></li>
+                            <li><a href="#">관람시간표</a></li>
+                            <li><a href="#">이달의 별자리</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">천문대예약</a>
+
+                        <ul class="submenu">
+                            <li><a href="#">예약하기</a></li>
+                            <li><a href="#">예약확인</a></li>
+                            <li><a href="#">예약취소</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">커뮤니티</a>
+                        <ul class="submenu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">방문후기</a></li>
+                            <li><a href="#">자유게시판</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="slider">
+            <div class="imglist">
+                <div class="sl">
+                    <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/[Slide]/img1.jpg">
+                    <span class="slider_text">이미지1</span>
+                </div>
+                <div class="sl">
+                    <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/[Slide]/img2.jpg">
+                    <span class="slider_text">이미지2</span>
+                </div>
+                <div class="sl">
+                    <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/[Slide]/img3.jpg">
+                    <span class="slider_text">이미지3</span>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="con1">
+                <div class="tab">
+                    <div class="tab_bth">
+                        <h3 class="aci">공지사항</h3>
+                        <span style="margin: 0px 5px; font-size: 20px;">|</span>
+                        <h3>갤러리</h3>
+                    </div>
+                    <div class="tab_text">
+                        <div class="tab_text1">
+                            <div class="pop_open">
+                                <span class="tba_text_span">하늘과 바람과 별과 詩 사생대회</span>
+                                <span class="day">2020.11.19</span>
+                            </div>
+                            <div>
+                                <span class="tba_text_span">하계기간 야간 연장운영합니다.</span>
+                                <span class="day">2020.11.19</span>
+                            </div>
+                            <div>
+                                <span class="tba_text_span">청소년 대상 천문교실 안내</span>
+                                <span class="day">2020.11.19</span>
+                            </div>
+                            <div>
+                                <span class="tba_text_span">제1회 별사진 공모전 개회됩니다.</span>
+                                <span class="day">2020.11.19</span>
+                            </div>
+                        </div>
+                        <div class="tab_text2">
+                            <div>이미지1</div>
+                            <div>이미지2</div>
+                            <div>이미지3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="con2">
+                <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Contents/배너 이미지/banner.jpg">
+                <span class="con2_text">배너입니다</span>
+            </div>
+            <div class="con3">
+                <div><img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Contents/바로가기 이미지/direct1.jpg"></div>
+                <div><img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Contents/바로가기 이미지/direct2.jpg"></div>
+                <div><img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Contents/바로가기 이미지/direct3.jpg"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer1">
+                <img src="/A-3_수험자제공파일(블로그 제공 이미지수정 파일)/Footer/footerLogo.png">
+            </div>
+            <div class="footer2">
+                <div class="footer2-1">
+                    <div>저작권보호정책</div>
+                    <div>대한민국천문대</div>
+                    <div>개인정보처리방침</div>
+                    <div>정보공개청구</div>
+                    <div>행정서비스현장</div>
+                </div>
+                <div class="footer2-2">
+                    <div>COPYRIGHTⓒ by WEBDESIGN. ALL RIGHTS RESERVED</div>
+                </div>
+            </div>
+        </div>
+        <div class="pop">
+            <div class="pop_text">내용</div>
+            <div class="pop_close">닫기</div>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+            let navli = document.querySelectorAll(".nav > ul > li");
+            let nava = document.querySelectorAll(".nav > ul > li > ul > li > a");
+
+            navli.forEach(function(se){
+                se.addEventListener("mouseover",function(){
+                    se.querySelector(".submenu").style.height = "200px";
+                    nava.forEach(function(se){
+                        se.style.display = "block";
+                    })
+                })
+                se.addEventListener("mouseout",function(){
+                    se.querySelector(".submenu").style.height = "0px";
+                    nava.forEach(function(se){
+                        se.style.display = "none";
+                })
+                })
+            })
+
+            let index = 0;
+            const sl = document.querySelectorAll(".sl");
+            sl.forEach(function(img){
+                img.style.opacity = "0"
+            })
+            sl[0].style.opacity = "1";
+            setInterval(function(){
+                let a = (index+1)%sl.length;
+                sl[index].style.opacity ="0";
+                sl[a].style.opacity = "1";
+                sl.forEach( img => img.style.transition = "all 1s"); 
+                index = a;
+            },3000)
+
+            let bth = document.querySelectorAll(".tab_bth > h3");
+            let text = document.querySelectorAll(".tab_text > div")
+
+            text.forEach(function(se){
+                se.style.display = "none";
+            })
+            text[0].style.display = "block";
+
+            bth.forEach(function(bths,index){
+                bths.addEventListener("click",function(){
+                    bth.forEach(function(se){
+                        se.classList.remove("aci");
+                    })
+                    bth[index].classList.add("aci");
+                    text.forEach(function(se){
+                        se.style.display = "none";
+                    })
+                    text[index].style.display = "block";
+                })
+            })
+            document.querySelector(".pop_open").addEventListener("click",function(){
+                document.querySelector(".pop").style.display = "block";
+            })
+            document.querySelector(".pop_close").addEventListener("click",function(){
+                document.querySelector(".pop").style.display = "none";
+            })
+
+
+        }
+    </script>
+</body>
+</html>
